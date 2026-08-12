@@ -3,16 +3,17 @@
    引入方式：pages/_document.js 中 <link rel='stylesheet' href='/css/custom.css' />
    注意：若需同步到 Notion 配置中心 GLOBAL_CSS，必须用无注释版本
    （Notion 富文本会消费 * 等 markdown 字符，注释会破坏规则）
+   注意2：字体由 _document.js 的独立 <link> 加载，本文件不放 @import
+   （@import 会串行下载外部字体，国内网络超时将阻塞整个样式表应用）
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 body {
-  background: #fafaf9 !important;      
-  color: #334155 !important;           
+  background: #fafaf9 !important;
+  color: #334155 !important;
   font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
-  font-weight: 300;
-  line-height: 1.9;
-  letter-spacing: 0.01em;
+  font-weight: 300 !important;
+  line-height: 1.9 !important;
+  letter-spacing: 0.01em !important;
 }
 header,
 .blog-header,
@@ -23,9 +24,9 @@ header,
   border-bottom: 1px solid #e7e5e4 !important;
 }
 .notion-page-content {
-  font-size: 15.5px;
-  line-height: 1.9;
-  max-width: 780px;
+  font-size: 15.5px !important;
+  line-height: 1.9 !important;
+  max-width: 780px !important;
 }
 .notion-title {
   font-family: 'Noto Serif SC', Georgia, 'Songti SC', serif !important;
@@ -45,8 +46,8 @@ header,
 }
 .notion-h2 {
   font-size: 22px !important;
-  border-left: 3px solid #0d9488;
-  padding-left: 14px;
+  border-left: 3px solid #0d9488 !important;
+  padding-left: 14px !important;
   margin-top: 1.8em !important;
   margin-bottom: 0.8em !important;
   line-height: 1.5 !important;
@@ -79,7 +80,7 @@ header,
   margin-bottom: 1.2em !important;
 }
 .notion-list li::marker {
-  color: #0d9488;
+  color: #0d9488 !important;
 }
 .notion-list li {
   margin-bottom: 0.4em !important;
@@ -121,8 +122,8 @@ header,
   font-family: 'JetBrains Mono', Consolas, monospace !important;
   font-size: 0.85em !important;
   background: #f1f5f9 !important;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
   color: #0f766e !important;
   padding: 1.5px 6px !important;
 }

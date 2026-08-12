@@ -53,6 +53,14 @@ class MyDocument extends Document {
           {/* 定制主题样式（墨青主色/衬线标题/深色代码块/卡片hover/暗色模式） */}
           <link rel='stylesheet' href='/css/custom.css' />
 
+          {/* 定制字体（独立 link 并行加载，不阻塞 custom.css；超时不影响样式） */}
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap'
+          />
+
           {/* 预加载字体 */}
           {BLOG.FONT_AWESOME && (
             <>
