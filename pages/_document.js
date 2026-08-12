@@ -50,6 +50,9 @@ class MyDocument extends Document {
           <link rel='preconnect' href='https://images.unsplash.com' />
           <link rel='dns-prefetch' href='//images.unsplash.com' />
 
+          {/* 定制主题样式（墨青主色/衬线标题/深色代码块/卡片hover/暗色模式） */}
+          <link rel='stylesheet' href='/css/custom.css' />
+
           {/* 预加载字体 */}
           {BLOG.FONT_AWESOME && (
             <>

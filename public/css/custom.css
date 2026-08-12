@@ -1,8 +1,238 @@
-/* 静态文件导入 自定义样式*/
+/* ============================================================
+   GitBook 主题定制样式（2026-08-12 小布）
+   引入方式：pages/_document.js 中 <link rel='stylesheet' href='/css/custom.css' />
+   注意：若需同步到 Notion 配置中心 GLOBAL_CSS，必须用无注释版本
+   （Notion 富文本会消费 * 等 markdown 字符，注释会破坏规则）
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-#theme-fukasawa .sideLeft hr{
-    opacity: .04;
+body {
+  background: #fafaf9 !important;      
+  color: #334155 !important;           
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+  font-weight: 300;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
 }
-.fa-info:before {
-    content: "\f05a";
+header,
+.blog-header,
+.nav-bar {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e7e5e4 !important;
+}
+.notion-page-content {
+  font-size: 15.5px;
+  line-height: 1.9;
+  max-width: 780px;
+}
+.notion-title {
+  font-family: 'Noto Serif SC', Georgia, 'Songti SC', serif !important;
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  line-height: 1.45 !important;
+  margin-bottom: 0.5em !important;
+}
+.notion-h,
+.notion-h2,
+.notion-h3 {
+  font-family: 'Noto Serif SC', Georgia, 'Songti SC', serif !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+}
+.notion-h2 {
+  font-size: 22px !important;
+  border-left: 3px solid #0d9488;
+  padding-left: 14px;
+  margin-top: 1.8em !important;
+  margin-bottom: 0.8em !important;
+  line-height: 1.5 !important;
+}
+.notion-h3 {
+  font-size: 18px !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.6em !important;
+}
+.notion-text {
+  margin-bottom: 1.2em !important;
+}
+.notion-text:last-child {
+  margin-bottom: 0 !important;
+}
+.notion-link {
+  color: #0f766e !important;
+  border-bottom: 1px dashed rgba(13, 148, 136, 0.45) !important;
+  transition: border-color 0.2s;
+}
+.notion-link:hover {
+  border-bottom-style: solid !important;
+  color: #0d9488 !important;
+}
+.notion-bold {
+  color: #0f172a !important;
+  font-weight: 500 !important;
+}
+.notion-list {
+  margin-bottom: 1.2em !important;
+}
+.notion-list li::marker {
+  color: #0d9488;
+}
+.notion-list li {
+  margin-bottom: 0.4em !important;
+}
+.notion-quote {
+  border-left: 3px solid #0d9488 !important;
+  background: #f5f5f4 !important;
+  padding: 14px 20px !important;
+  border-radius: 0 12px 12px 0 !important;
+  margin: 0 0 1.4em !important;
+  color: #64748b !important;
+}
+.notion-callout {
+  background: #f0fdfa !important;
+  border: 1px solid rgba(13, 148, 136, 0.25) !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+  margin-bottom: 1.4em !important;
+}
+.notion-code {
+  background: #0f172a !important;      
+  border-radius: 12px !important;
+  padding: 18px 20px !important;
+  font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.75 !important;
+  color: #e2e8f0 !important;
+  overflow-x: auto;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+.notion-code .code-block-copy-button {
+  border-radius: 6px !important;
+  opacity: 0.6;
+}
+.notion-code .code-block-copy-button:hover {
+  opacity: 1;
+}
+.notion-inline-code {
+  font-family: 'JetBrains Mono', Consolas, monospace !important;
+  font-size: 0.85em !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #0f766e !important;
+  padding: 1.5px 6px !important;
+}
+.catalog-item {
+  border-left-width: 2px !important;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.15s;
+  padding-left: 14px !important;
+}
+.catalog-item:hover {
+  color: #0d9488 !important;
+  background: #f5f5f4 !important;
+}
+.notion-table-of-contents-item-active,
+.catalog-item.border-green-500 {
+  background: #f0fdfa !important;
+  color: #0d9488 !important;
+  border-left-color: #0d9488 !important;
+  font-weight: 500 !important;
+}
+.toc-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #d6d3d1 transparent;
+}
+.article-list article,
+.post-list article,
+.blog-list .post {
+  background: #ffffff !important;
+  border: 1px solid #e7e5e4 !important;
+  border-radius: 12px !important;
+  padding: 20px 24px !important;
+  transition: all 0.2s ease !important;
+}
+.article-list article:hover,
+.post-list article:hover,
+.blog-list .post:hover {
+  border-color: #0d9488 !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.10) !important;
+  transform: translateY(-1px);
+}
+.tag,
+.category-item {
+  background: #f0fdfa !important;
+  color: #0f766e !important;
+  border-radius: 999px !important;
+  padding: 2px 12px !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  border: 1px solid rgba(13, 148, 136, 0.2) !important;
+}
+.notion-divider {
+  border-color: #e7e5e4 !important;
+}
+.notion-table {
+  border-collapse: collapse !important;
+  font-size: 13.5px !important;
+  margin: 1.4em 0 !important;
+}
+.notion-table th {
+  background: #f5f5f4 !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  padding: 10px 14px !important;
+  border: 1px solid #e7e5e4 !important;
+}
+.notion-table td {
+  padding: 9px 14px !important;
+  border: 1px solid #e7e5e4 !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f172a !important;
+    color: #cbd5e1 !important;
+  }
+  .notion-title,
+  .notion-h,
+  .notion-h2,
+  .notion-h3 {
+    color: #f1f5f9 !important;
+  }
+  .notion-bold {
+    color: #f1f5f9 !important;
+  }
+  .notion-quote {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+  }
+  .notion-inline-code {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #5eead4 !important;
+  }
+  .article-list article,
+  .post-list article {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+  }
 }
