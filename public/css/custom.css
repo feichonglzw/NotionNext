@@ -236,3 +236,171 @@ header,
     border-color: #334155 !important;
   }
 }
+/* ============================================================
+   第二轮增补：对齐实际 DOM 类名（2026-08-12）
+   修正首轮选择器与实际结构的差距：
+   - 页面标题 = #container > h1（非 .notion-title）
+   - 表格 = .notion-simple-table（非 .notion-table）
+   - 书签卡片 = .notion-bookmark-*
+   - 顶栏 = #top-nav
+   - 侧边栏/分类绿色残留 = #posts-wrapper / #category-list
+   ============================================================ */
+
+/* 顶栏毛玻璃 */
+#theme-gitbook #top-nav > div:first-child {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e7e5e4 !important;
+}
+.dark #theme-gitbook #top-nav > div:first-child {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-bottom-color: #334155 !important;
+}
+
+/* 文章页面标题（h1.text-3xl）：衬线 */
+#theme-gitbook #container > h1 {
+  font-family: 'Noto Serif SC', Georgia, 'Songti SC', serif !important;
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  line-height: 1.45 !important;
+  margin-bottom: 0.5em !important;
+}
+.dark #theme-gitbook #container > h1 {
+  color: #f1f5f9 !important;
+}
+
+/* 正文一级标题（notion-h1 首轮遗漏） */
+.notion-h1 {
+  font-family: 'Noto Serif SC', Georgia, 'Songti SC', serif !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+}
+.dark .notion-h1 {
+  color: #f1f5f9 !important;
+}
+
+/* 表格：notion-simple-table 系列 */
+.notion-simple-table {
+  border-collapse: collapse !important;
+  font-size: 13.5px !important;
+  margin: 1.4em 0 !important;
+}
+.notion-simple-table-header-cell {
+  background: #f5f5f4 !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  padding: 10px 14px !important;
+  border: 1px solid #e7e5e4 !important;
+}
+.notion-simple-table-cell {
+  padding: 9px 14px !important;
+  border: 1px solid #e7e5e4 !important;
+}
+.notion-simple-table-row:nth-child(even) .notion-simple-table-cell {
+  background: #fafaf9;
+}
+.dark .notion-simple-table-header-cell {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+.dark .notion-simple-table-cell {
+  border-color: #334155 !important;
+}
+.dark .notion-simple-table-row:nth-child(even) .notion-simple-table-cell {
+  background: #172033;
+}
+
+/* 书签卡片 */
+.notion-bookmark {
+  border-radius: 12px !important;
+  border: 1px solid #e7e5e4 !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+.notion-bookmark:hover {
+  border-color: #0d9488 !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.10) !important;
+}
+.notion-bookmark-title {
+  font-weight: 500 !important;
+  color: #0f172a !important;
+}
+.notion-bookmark-description {
+  color: #64748b !important;
+}
+.dark .notion-bookmark {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+.dark .notion-bookmark-title {
+  color: #f1f5f9 !important;
+}
+.dark .notion-bookmark-description {
+  color: #94a3b8 !important;
+}
+
+/* 侧边栏导航选中态与 hover：绿色 → 墨青 */
+#theme-gitbook #posts-wrapper .text-green-600 {
+  color: #0d9488 !important;
+}
+#theme-gitbook #posts-wrapper .bg-green-50\/70 {
+  background-color: #f0fdfa !important;
+}
+#theme-gitbook #posts-wrapper .hover\:bg-gray-50:hover {
+  background-color: #f0fdfa !important;
+}
+.dark #theme-gitbook #posts-wrapper .dark\:text-green-400 {
+  color: #5eead4 !important;
+}
+
+/* 分类按钮：绿色 → 墨青 */
+#theme-gitbook #category-list a.bg-green-600,
+#theme-gitbook #category-list a.hover\:bg-green-600:hover {
+  background-color: #0d9488 !important;
+}
+#theme-gitbook #category-list a.dark\:text-green-400 {
+  color: #0f766e !important;
+}
+
+/* 目录激活态：渐变背景（升级首轮的纯色） */
+.catalog-item.border-green-500 {
+  background: linear-gradient(90deg, #f0fdfa, transparent) !important;
+  border-left-color: #0d9488 !important;
+  color: #0d9488 !important;
+}
+.catalog-item {
+  border-left-width: 2px !important;
+  color: #64748b;
+}
+.dark .catalog-item.border-green-500 {
+  background: linear-gradient(90deg, rgba(13,148,136,0.18), transparent) !important;
+  color: #5eead4 !important;
+}
+
+/* 全局绿色残留统一为墨青（Tailwind 静态类覆盖） */
+#theme-gitbook .text-green-600 { color: #0d9488 !important; }
+#theme-gitbook .hover\:text-green-600:hover,
+#theme-gitbook .hover\:text-green-500:hover { color: #0d9488 !important; }
+#theme-gitbook .dark\:hover\:text-green-400:hover,
+#theme-gitbook .dark\:text-green-400 { color: #5eead4 !important; }
+#theme-gitbook .hover\:bg-green-600:hover { background-color: #0d9488 !important; }
+#theme-gitbook .bg-green-500 { background-color: #0d9488 !important; }
+#theme-gitbook .border-green-500 { border-color: #0d9488 !important; }
+#theme-gitbook .text-green-400 { color: #2dd4bf !important; }
+
+/* 正文图片圆角 */
+.notion-page-content img {
+  border-radius: 12px;
+}
+
+/* 顶栏搜索框微调 */
+#theme-gitbook #top-nav input {
+  border-radius: 8px !important;
+  font-size: 13px !important;
+}
